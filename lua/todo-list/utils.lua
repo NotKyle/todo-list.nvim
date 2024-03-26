@@ -34,7 +34,7 @@ function M.create_todo_file()
 end
 
 -- Function to add a task to the todo list
-function M.add_task(task, priority)
+function M.add_task(task)
 	local todo_file = vim.fn.expand("%:p:h") .. "/todo.txt"
 	local file = io.open(todo_file, "a")
 
@@ -45,7 +45,7 @@ function M.add_task(task, priority)
 	task = string.match(task, '"(.-)"')
 
 	-- Priority will then be anything not in the quotes
-	priority = string.match(priority, '"(.-)"')
+	priority = 5
 
 	file:write("Task: " .. task .. " Priority: " .. priority .. "\n")
 	file:close()
