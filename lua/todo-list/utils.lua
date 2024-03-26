@@ -74,9 +74,9 @@ function M.remove_task(task)
 end
 
 -- Create commands to add, list, and remove tasks. Also to create a new todo file if we want to force it.
-vim.cmd([[command! -nargs=+ AddTask lua require("todo-list.plugin.utils").add_task(<f-args>)]])
-vim.cmd([[command! ListTasks lua print(vim.inspect(require("todo-list.plugin.utils").list_tasks()))]])
-vim.cmd([[command! -nargs=1 RemoveTask lua require("todo-list.plugin.utils").remove_task(<f-args>)]])
-vim.cmd([[command! CreateTodoFile lua require("todo-list.plugin.utils").create_todo_file()]])
+vim.cmd([[command! -nargs=+ AddTask lua require("todo-list.utils").add_task(<f-args>)]])
+vim.cmd([[command! ListTasks lua print(vim.inspect(require("todo-list.utils").list_tasks()))]])
+vim.cmd([[command! -nargs=1 RemoveTask lua require("todo-list.utils").remove_task(<f-args>)]])
+vim.cmd([[command! CreateTodoFile lua require("todo-list.utils").create_todo_file()]])
 
 return M
