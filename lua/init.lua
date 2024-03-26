@@ -98,3 +98,6 @@ local todo = require("todo")
 
 vim.cmd([[command! -nargs=0 Todo lua require('todo').todo()]])
 
+-- Keymap
+vim.api.nvim_set_keymap("n", "<leader>td", ":Todo<CR>", { noremap = true, silent = true })
+
