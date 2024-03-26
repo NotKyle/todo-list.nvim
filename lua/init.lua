@@ -88,3 +88,13 @@ function M.todo()
 end
 
 return M
+
+-- Make it compativle with LazyVim plugin manager
+
+-- Path: lua/init.lua
+-- Create command
+
+local todo = require("todo")
+
+vim.cmd([[command! -nargs=0 Todo lua require('todo').todo()]])
+
