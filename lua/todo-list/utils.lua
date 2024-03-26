@@ -37,12 +37,25 @@ end
 function M.add_task(task, priority)
 	local todo_file = vim.fn.expand("%:p:h") .. "/todo.txt"
 	local file = io.open(todo_file, "a")
+
+	-- Task will be a "string" and priority will be an integer
+	-- We need to get the string between the quotes
+	-- We can use string.match to get the string between the quotes
+
+	task = string.match(task, '"(.-)"')
+
+	-- Priority will then be anything not in the quotes
+	priority = string.match(priority, '"(.-)"')
+
 	file:write("Task: " .. task .. " Priority: " .. priority .. "\n")
 	file:close()
 end
 
 -- Function to list all tasks in the todo list
 function M.list_tasks()
+	-- Open tasks in a buffer that we can then display in a floating window
+	-- This will allow us to delete tasks from the list easily, as well as add new tasks
+
 	local todo_file = vim.fn.expand("%:p:h") .. "/todo.txt"
 	local file = io.open(todo_file, "r")
 	local tasks = {}
@@ -51,7 +64,9 @@ function M.list_tasks()
 			table.insert(tasks, line)
 		end
 	end
+
 	file:close()
+
 	return tasks
 end
 
