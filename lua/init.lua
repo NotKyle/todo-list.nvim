@@ -20,4 +20,6 @@ function M.remove_task(task)
 	utils.remove_task(task)
 end
 
+print("Todo list plugin loaded")
+
 return M
