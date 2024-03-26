@@ -1,4 +1,5 @@
-local M = {}
+-- Create a table to hold the module
+local todo = {}
 
 -- Define the file name to save todo lists
 local TODO_FILE_NAME = "todo_list.json"
@@ -27,21 +28,21 @@ local function save_todo_list(project_path, todo_list)
 end
 
 -- Function to add a task to todo list
-function M.add_task(project_path, task, priority)
+function todo.add_task(project_path, task, priority)
 	local todo_list = load_todo_list(project_path)
 	table.insert(todo_list, { task = task, priority = priority })
 	save_todo_list(project_path, todo_list)
 end
 
 -- Function to remove a task from todo list
-function M.remove_task(project_path, index)
+function todo.remove_task(project_path, index)
 	local todo_list = load_todo_list(project_path)
 	table.remove(todo_list, index)
 	save_todo_list(project_path, todo_list)
 end
 
 -- Function to list tasks in todo list
-function M.list_tasks(project_path)
+function todo.list_tasks(project_path)
 	local todo_list = load_todo_list(project_path)
 	for i, task in ipairs(todo_list) do
 		print(i .. ". " .. task.task .. " (Priority: " .. task.priority .. ")")
@@ -56,4 +57,5 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true }
 )
 
-return M
+-- Return the module table
+return todo
