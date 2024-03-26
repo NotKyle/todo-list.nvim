@@ -1,12 +1,23 @@
-local main = require("main.lua")
+-- Our main plugin file, where we set up the plugin and define the commands.
+
+local utils = require("todo-list.plugin.utils")
 
 local M = {}
 
-M.setup = function()
-	vim.api.nvim_set_keymap(
-		"n",
-		"<leader>tl",
-		'<cmd>lua require("main").list_tasks(vim.fn.getcwd())<CR>',
-		{ noremap = true, silent = true }
-	)
+function M.setup()
+	utils.create_todo_file()
 end
+
+function M.add_task(task, priority)
+	utils.add_task(task, priority)
+end
+
+function M.list_tasks()
+	return utils.list_tasks()
+end
+
+function M.remove_task(task)
+	utils.remove_task(task)
+end
+
+return M
