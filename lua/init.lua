@@ -1,6 +1,6 @@
 -- Our main plugin file, where we set up the plugin and define the commands.
 
-local utils = require("todo-list.plugin.utils")
+local utils = require("utils")
 
 local M = {}
 
