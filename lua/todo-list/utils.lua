@@ -86,6 +86,7 @@ function M.list_tasks()
 	local win_width = math.ceil(width * 0.8)
 	local row = math.ceil((height - win_height) / 2 - 1)
 	local col = math.ceil((width - win_width) / 2)
+	-- Add shadow to the floating window
 	local opts = {
 		style = "minimal",
 		relative = "editor",
@@ -93,6 +94,7 @@ function M.list_tasks()
 		height = win_height,
 		row = row,
 		col = col,
+		border = "shadow",
 	}
 
 	local win = vim.api.nvim_open_win(buf, true, opts)
